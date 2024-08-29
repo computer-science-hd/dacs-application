@@ -21,10 +21,11 @@ function loadData(){
         
         return data;
     } catch {
-        return generateEmptyDataObject(formExtendDetails, formQuestions);
+        return generateEmptyDataObject(formExtendDetails, formQuestions, formTopics);
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isEqual(obj1: any, obj2: any){
     /* quick check */
     if (Object.keys(obj1).length != Object.keys(obj2).length) return false;
@@ -33,7 +34,7 @@ function isEqual(obj1: any, obj2: any){
     return JSON.stringify(obj1) == JSON.stringify(obj2)
 };
 
-function generateEmptyDataObject(extentDetails: ExtentDetails, questions: Questions) {
+function generateEmptyDataObject(extentDetails: ExtentDetails, questions: Questions, formTopics: Topics) {
 
     /* create empty data object */
 	const data: Data = { extentDetails: {} as FormDataExtentDetails, topics: formTopics, lectures: [] as FormDataLectures, questions: {} as FormDataQuestions };
@@ -43,7 +44,7 @@ function generateEmptyDataObject(extentDetails: ExtentDetails, questions: Questi
 	} 
 	
     /* add first lecture for convienience */
-    data.lectures = [{ name: '', points: 0, description: '', subject: null, skills: {}}]
+    data.lectures = formTopics.map(topic=>({ name: '', points: 0, description: '', subject: null, skills: {}, topic:topic.name}))
 	
     for (const question of questions) {
 		data['questions'][question] = '';
@@ -52,8 +53,8 @@ function generateEmptyDataObject(extentDetails: ExtentDetails, questions: Questi
 	return data;
 }
 
-export function addLecture(){
-    let newLecture: Lecture = { name: '', points: 0, description: '', subject: null, skills: {}}
+export function addLecture(topic:string){
+    const newLecture: Lecture = { name: '', points: 0, description: '', subject: null, skills: {}, topic:topic}
 
     data.update((data: Data) => {
         data.lectures = [...data.lectures, newLecture]
@@ -68,23 +69,22 @@ export function deleteLecture(idx: number){
     })
 }
 
-export function addSkill(lectureIdx: number, skill: Skill){
-    
+export function addSkill(lectureIdx: number, skill: Skill, topic: Topic){
     /* get other lectures */
-    const otherLectures: Array<Lecture> = JSON.parse(JSON.stringify(get(data).lectures));
-    otherLectures.splice(lectureIdx,1); 
-    
+    let otherLectures: Array<Lecture> = JSON.parse(JSON.stringify(get(data).lectures));
+    otherLectures = otherLectures.filter(lec=> lec.topic === topic.name);
+    otherLectures.splice(lectureIdx,1);
     /* get existing skills */
-    let otherLectureSkills: Array<Skill> = []; 
+    const otherLectureSkills: Array<Skill> = []; 
     
     otherLectures.forEach((lecture) => {
-        for (let [key, value] of Object.entries(lecture.skills)) {
+        for (const [key, value] of Object.entries(lecture.skills)) {
             if (value) {
                 otherLectureSkills.push(key);
             }
         }
     });
-
+    console.log("otherLectureSkills: ", otherLectureSkills);
     /* alert if skill already exists */
     if (otherLectureSkills.includes(skill)) {
         alert("You can only declare a skill once.\n\nPlease select the lecture that contributed the most to your skill acquisition. ")
@@ -135,8 +135,7 @@ export function isValidDataFormat(data: Data){
     
     for (const lecture of lectures){
         const lectureSkills = Object.keys(lecture.skills).sort()
-
-        if(!isEqual(lectureSkills,skills)) return false
+        if(!lectureSkills.every(element => skills.includes(element)))return false;
     }
 
     return true
@@ -148,7 +147,7 @@ export function isValidDataFormat(data: Data){
 
 export function isValidFormData(data: Data){
    
-    let exceptions: Record<string, Record<string, string>> = {
+    const exceptions: Record<string, Record<string, string>> = {
         "extentDetails": {},
         "lectures": {},
         "subjectAreas": {},

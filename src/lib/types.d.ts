@@ -16,7 +16,8 @@ type Lecture = {
 	points: number;
 	description: string;
 	subject: Subject | null;
-	skills: Record<Skill, boolean>
+	skills: Record<Skill, boolean>;
+	topic: string;
 };
 
 type Subject = string

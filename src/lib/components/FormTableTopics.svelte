@@ -28,12 +28,12 @@ import { data, addLecture, deleteLecture, addSkill } from '$lib/store/store';
 				<TableHeadCell class="text-2xs p-2"></TableHeadCell>
 			</TableHead>
 			<TableBody>
-				{#each $data.lectures as lecture, lectureIdx}
+				{#each $data.lectures.filter(e=>e.topic===topic.name) as lecture, lectureIdx}
 				<TableBodyRow>
 					<TableBodyCell class="p-2"><Input type="text" bind:value={lecture.name} class="text-2xs"/></TableBodyCell>
 					<TableBodyCell class="p-2 text-2xs"><PositiveNumberInput bind:value={lecture.points} class="text-2xs text-center"/></TableBodyCell>
 					{#each topic.subtopics as subTopic}
-					<TableBodyCell class="p-2"><Checkbox bind:checked={lecture.skills[subTopic]} on:change={() => addSkill(lectureIdx, subTopic)} class="m-auto"/></TableBodyCell>
+					<TableBodyCell class="p-2"><Checkbox bind:checked={lecture.skills[subTopic]} on:change={() => addSkill(lectureIdx, subTopic, topic)} class="m-auto"/></TableBodyCell>
 					{/each}
 					<TableBodyCell class="p-2 text-2xs"><Input type="text" bind:value={lecture.description} class="text-2xs"/></TableBodyCell>
 					<TableBodyCell class="p-2"><Button color="red" size="xs" class="text-2xs" on:click={() => deleteLecture(lectureIdx)}><TrashBinOutline /></Button></TableBodyCell>
@@ -41,6 +41,6 @@ import { data, addLecture, deleteLecture, addSkill } from '$lib/store/store';
 				{/each}
 			</TableBody>
 	</Table>
-	<Button class="text-2xs m-2" on:click={() => addLecture()}>Add Another Lecture</Button>
+	<Button class="text-2xs m-2" on:click={() => addLecture(topic.name)}>Add Another Lecture</Button>
 </div>
 {/each}
