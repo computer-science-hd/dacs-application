@@ -1,101 +1,97 @@
 export const formTopics: Topics = [
 	{
-		name: 'Practical computer science',
+		name: 'Differential Geometry',
 		subtopics: [
-			'Technical and formal basics of programming',
-			'Syntax and semantics of programming languages',
-			'Abstraction and specialization',
-			'Specification and verification of algorithms',
-			'Termination',
-			'Complexity analysis'
+			'Manifolds',
+			'Vector bundles',
+			'Lie groups',
+			'Simplicial complexes',
+			'Group actions',
+			'Covering spaces'
+		],
+		module: [
+		'Topological and differentiable manifolds',
+		'Vector bundles',
+		'Lie groups as an important example class',
+		'Triangulations and simplicial complexes',
+		'Group actions also from a simplicial perspective',
+		'Covering spaces'
+		]
+
+	},
+	{
+		name: 'Functional Analysis',
+		subtopics: [
+			'Continuation of uniformly continuous maps',
+			'Banach spaces and linear operators',
+			'Duality and weak topology',
+			'Measure theory and Lp spaces',
+			'Hilbert spaces and self adjoint operators',
+			'Spectral theory of compact operators'			
+		],
+		module: [
+		'Metric spaces and their mappings: including completion, Baire theorem, (relatively) compact subsets and their characterization, extendability of uniformly continuous mappings',
+		'Normed spaces and their mappings: including Banach spaces, dual spaces, weak topologies, topological vector spaces, examples of function spaces, spectral theory of compact operators, with the usual theorems (including the spectral theorem)',
+		'Hilbert spaces and their mappings'
+		]
+	},
+	{	
+		name: 'Numerical Analysis',
+		subtopics: [
+			'Conditioning and stability',
+			'Interpolation and quadrature (1d)',
+			'Matrix factorisation (LU, QR, SVD)',
+			'Iterative methods and solution of nonlinear problems',
+			'Numerical methods for (stiff) ODEs',
+			'Eigenvalue problems'
+		],
+		module:  [
+		'Conditioning, Stability, Rounding Errors',
+		'Interpolation, Approximation and Numerical Integration',
+		'Systems of Linear Equations and Least Squares Problems (incl. LU, QR, SVD Factorisations)',
+		'Iterative Methods for Systems of Nonlinear Equations',
+		'and either: Numerical Solution of ODEs: Explicit and Implicit Methods for Initial-Value Problems (Runge-Kutta, Linear Multistep Methods,…); Consistency, Stability, Convergence',
+		'or Numerical Linear Algebra: Eigenvalue Problems (Iterative Methods, QR Method); Krylov Subspace Methods'
+		]		
+	},
+	{
+		name:'Statistics and Probability Theory',
+		subtopics: [
+			'Radon-Nikodym theorem',
+			'Markov kernels',
+			'Martingales and Markov chains',
+			'Neyman-Pearson theory',
+			'Maximum likelihood estimation',
+			'Asymptotic normality'
+		],
+		module:  [
+			'Measure and integration theory: Algebras, Borel algebra, measurable mappings, construction of probability measures, product spaces. Expectation as a measure integral, Lebesgue, Beppo Levi, Fubini, and Radon-Nikodym theorems',		
+			'Conditional distributions: Conditional expectations, Markov kernels, Bayes model',
+			'Stochastic processes, adapted, predictable, stopping times, stopped process',
+			'Martingales in discrete time, convergence, optional sampling, optional stopping, Doob decomposition and square variation',
+			'Markov chains in discrete time, strong Markov property, recurrence, transience, irreducibility, aperiodicity, invariant distribution, convergence',
+			'Strong laws of large numbers and central limit theorems',
+			'Linear models: least squares estimation, confidence intervals and testing',
+			'Asymptotic normality of maximum likelihood estimators and construction of asymptotic confidence regions'
 		]
 	},
 	{
-		name: 'Technical computer science',
+		name: 'Variational Methods and Optimization',
 		subtopics: [
-			'Boolean algebra',
-			'Digital circuits',
-			'Sequential logic',
-			'Number representation and encoding',
-			'Instruction pipelining',
-			'Branch predictor'
-		]
-	},
-	{
-		name: 'Algorithms and data structures',
-		subtopics: [
-			'Fundamentals of algorithms',
-			'Run time analysis',
-			'Basic data structures',
-			'Sorting and hashing',
-			'Graph algorithms',
-			'Search'
-		]
-	},
-	{
-		name: 'Operating systems and networks',
-		subtopics: [
-			'Processes and scheduling',
-			'Memory management',
-			'Concurrency and deadlocks',
-			'APIs, file systems, and I/O',
-			'Communication and routing',
-			'TCP/IP and other protocols'
-		]
-	},
-	{
-		name:'Software engineering',
-		subtopics: [
-			'Requirements engineering',
-			'Software design and modeling',
-			'Quality management',
-			'Evolution',
-			'Software development process',
-			'Project management'
-		]
-	},
-	{
-		name: 'Theoretical computer science',
-		subtopics: [
-			'Computability',
-			'Turing machines',
-			'Halting problem',
-			'Finite automaton',
-			'Theory of formal languages',
-			'Complexity theory'
-		]
-	},
-	{
-		name: 'Databases',
-		subtopics: [
-			'Architecture and functionality of database systems',
-			'Relational database model',
-			'Query processing and optimization',
-			'SQL',
-			'Entity-relationship model',
-			'Physical data organization'
-		]
-	},
-	{
-		name: 'Linear algebra',
-		subtopics: [
-			'Basics of linear algebra',
-			'Vector spaces',
-			'Linear transformations',
-			'Applications of linear transformations',
-			'Inner product spaces',
-			'Applications of inner product spaces'
-		]
-	},
-	{
-		name: 'Calculus',
-		subtopics: [
-			'Complex numbers',
-			'Sequences and series',
-			'Continuity, limits, and Taylor expansion',
-			'Derivatives and mean value theorem',
-			'Fundamental theorem of calculus',
-			'Integrals and basics of multidimensional analysis'
+			'Gateaux and Frechet derivative',
+			'Convex duality in optimization',
+			'Karush-Kuhn-Tucker conditions',
+			'Positive (semi-)definite matrix cone',
+			'Conic programs (LPs, SOCPs, SDPs)',
+			'Proximal point methods'
+		],
+		module:  [
+		'Classification of optimization problems',
+		'Gradient and Newton methods for unconstrained differentiable optimization',
+		'Subdifferential calculus of convex functions',
+		'Conjugation and convex duality',
+		'Fermat s and Lagrangian optimality conditions',
+		'Proximal point methods, operator splitting for convex optimization problems'
 		]
 	}
 ]
