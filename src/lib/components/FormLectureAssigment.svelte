@@ -30,7 +30,7 @@
 </script>
 
 <P>
-    Declare which of your lectures belong to computer science and which belong to mathematics. Also declare additional lectures (beyond the skill-related lectures above) that should be recognized for computer science and mathematics. Provide name and points as listed in your transcript, and copy and paste the official description of the lecture.
+    Declare which of your lectures belong to computer science and which belong to mathematics. Also declare additional lectures (beyond the skill-related lectures above) that should be recognized for computer science and mathematics. Provide name and points as listed in your transcript, and copy and paste the official description of the lecture, and declare the respective subject area.
 </P> 
 
 
