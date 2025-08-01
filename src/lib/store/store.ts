@@ -135,6 +135,7 @@ export function addSkill(lectureIdx: number, skill: Skill){
     });
 
     /* alert if skill already exists */
+    /* fs: disabled 2025-08-01 to enable multiple lectures to declare a skill
     if (otherLectureSkills.includes(skill)) {
         alert("You can only declare a skill once.\n\nPlease select the lecture that contributed the most to your skill acquisition. ")
 
@@ -143,6 +144,7 @@ export function addSkill(lectureIdx: number, skill: Skill){
             return data
         })
     } 
+    */
 }
 
 export function checkDuplicateLecture(lectureIdx: number){
